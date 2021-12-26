@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>员工表</h1>
+<table border="1">
+    <tr>
+        <th>工号</th>
+        <th>姓名</th>
+        <th>部门</th>
+        <th>联系方式</th>
+    </tr>
+    {% for stuff in stuff_list %}
+    <tr>
+        <td>{{stuff.SNo}}</td>
+        <td>{{stuff.Name}}</td>
+        <td>{{stuff.Department}}</td>
+        <td>{{stuff.Phone}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

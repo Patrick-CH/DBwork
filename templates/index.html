@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>实验室仪器设备管理系统</h1>
+<body>
+    <ul>
+        <li><a href="{{ url_for('stuffList') }}">职工列表</a></li>
+        <li><a href="{{ url_for('equipmentListAvailable') }}">查询, 借出可用设备</a></li>
+        <li><a href="{{ url_for('equipmentListOut') }}">查询, 归还借出设备</a></li>
+    </ul>
+</body>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>可用仪器表</h1>
+<table border="1">
+    <tr>
+        <th>设备编号</th>
+        <th>设备名称</th>
+        <th>设备规格</th>
+        <th>设备类型</th>
+        <th>制造商</th>
+        <th>  </th>
+    </tr>
+    {% for e in equipment_list %}
+    <tr>
+        <td>{{e.ENo}}</td>
+        <td>{{e.EName}}</td>
+        <td>{{e.Norm}}</td>
+        <td>{{e.Type}}</td>
+        <td>{{e.Manufacture}}</td>
+        <td>
+            {% if borrow %}
+                <button>
+                    <a href="{{ url_for('borrow', ENo=e.ENo) }}">借出</a>
+                </button>
+            {% endif %}
+            {% if back %}
+                <button>
+                    <a href="{{ url_for('back', ENo=e.ENo) }}">归还</a>
+                </button>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
