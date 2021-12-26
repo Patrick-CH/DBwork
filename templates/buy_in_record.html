@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import form_field %}
+
+{% block content %}
+<h3>购入记录</h3>
+<!--class BuyInForm(FlaskForm):-->
+<!--    BDepart = StringField('购入部门', validators=[DataRequired()])-->
+<!--    SNoBuy = StringField('采购人工号', validators=[DataRequired()])-->
+<!--    InMng = StringField('管理员工号', validators=[DataRequired()])-->
+<!--    InDate = StringField('购入日期', validators=[DataRequired()], render_kw={"type": "date"})-->
+<!--    Fund = StringField('资金来源', validators=[DataRequired()])-->
+<!--    BConfirm = StringField('采购批准人', validators=[DataRequired()])-->
+<!--    EName = StringField('设备名称', validators=[DataRequired()])-->
+<!--    Norm = StringField('设备标准', validators=[DataRequired()])-->
+<!--    Type = StringField('设备类型', validators=[DataRequired()])-->
+<!--    Manufacture = StringField('制造商', validators=[DataRequired()])-->
+{% if data %}
+<table border="1">
+    <tr>
+        <th>设备名称</th>
+        <th>设备标准</th>
+        <th>设备类型</th>
+        <th>制造商</th>
+        <th>购入部门</th>
+        <th>采购人工号</th>
+        <th>采购人姓名</th>
+        <th>管理员工号</th>
+        <th>管理员姓名</th>
+        <th>购入日期</th>
+        <th>资金来源</th>
+        <th>采购批准人工号</th>
+        <th>采购批准人姓名</th>
+    </tr>
+    {% for e, buyInP, bConfirmP, buyInMngP, record in data %}
+        <tr>
+        <th>{{ e.EName }}</th>
+        <th>{{ e.Norm }}</th>
+        <th>{{ e.Type }}</th>
+        <th>{{ e.Manufacture }}</th>
+        <th>{{ record.BDepart }}</th>
+        <th>{{ record.SNoBuy }}</th>
+        <th>{{ buyInP.Name }}</th>
+        <th>{{ record.InMng }}</th>
+        <th>{{ buyInMngP.Name }}</th>
+        <th>{{ record.InDate }}</th>
+        <th>{{ record.Fund }}</th>
+        <th>{{ record.BConfirm }}</th>
+        <th>{{ bConfirmP.Name }}</th>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
