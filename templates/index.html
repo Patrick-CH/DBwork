@@ -5,8 +5,12 @@
 <body>
     <ul>
         <li><a href="{{ url_for('stuffList') }}">职工列表</a></li>
-        <li><a href="{{ url_for('equipmentListAvailable') }}">查询, 借出可用设备</a></li>
-        <li><a href="{{ url_for('equipmentListOut') }}">查询, 归还借出设备</a></li>
+        <li><a href="{{ url_for('equipmentListAvailable') }}">可用设备管理</a></li>
+        <li><a href="{{ url_for('equipmentListOut') }}">借出设备管理</a></li>
+        <li><a href="{{ url_for('equipmentAdd') }}">设备购入登记</a></li>
+        <li><a href="{{ url_for('equipmentRemove') }}">设备报废登记</a></li>
+        <li><a href="{{ url_for('equipmentInRecord') }}">设备购入记录</a></li>
+        <li><a href="{{ url_for('equipmentRemoveRecord') }}">设备报废记录</a></li>
     </ul>
 </body>
 {% endblock %}
