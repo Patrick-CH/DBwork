@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import form_field %}
+
+{% block content %}
+<h3>设备购入登记</h3>
+
+<form method="post">
+    {{ buyInForm.csrf_token }}
+    <p> </p>
+    {{ form_field(buyInForm.BDepart) }}
+    <p> </p>
+    {{ form_field(buyInForm.SNoBuy) }}
+    <p> </p>
+    {{ form_field(buyInForm.InMng) }}
+    <p> </p>
+    {{ form_field(buyInForm.InDate) }}
+    <p> </p>
+    {{ form_field(buyInForm.Fund) }}
+    <p> </p>
+    {{ form_field(buyInForm.BConfirm) }}
+    <p> </p>
+    {{ form_field(buyInForm.EName) }}
+    <p> </p>
+    {{ form_field(buyInForm.Norm) }}
+    <p> </p>
+    {{ form_field(buyInForm.Type) }}
+    <p> </p>
+    {{ form_field(buyInForm.Manufacture) }}
+    <p> </p>
+    {{ buyInForm.submit }}
+    <p> </p>
+</form>
+{% endblock %}
