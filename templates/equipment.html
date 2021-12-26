@@ -2,6 +2,56 @@
 
 {% block content %}
 <h1>可用仪器表</h1>
+<script>
+
+function addP(url, p, value){
+    if (url.indexOf("?") == -1){
+        url = url + "?" + p + "=" + value
+    } else {
+        url = url + "&" + p + "=" + value
+    }
+    return url
+}
+
+function search() {
+    var url = this.location.href.toString();
+    if (url.indexOf("?") !== -1){
+        url = url.split('?')[0]
+    }
+    url = addP(url, "search", "true")
+    var name = document.getElementById("search_name").value;
+    var norm = document.getElementById("search_norm").value;
+    var type = document.getElementById("search_type").value;
+    var manu = document.getElementById("search_manu").value;
+    if (name != null && name.length !== 0) {
+        url = addP(url, "name", name)
+    }
+    if (norm != null && norm.length !== 0) {
+        url = addP(url, "norm", norm)
+    }
+    if (type != null && type.length !== 0) {
+        url = addP(url, "type", type)
+    }
+    if (manu != null && manu.length !== 0) {
+        url = addP(url, "manu", manu)
+    }
+    window.location.href = url;
+}
+
+function clear_search(){
+    var oUrl = this.location.href.toString();
+    window.location.href = oUrl.split('?')[0];
+}
+</script>
+<div class="search_box">
+    <input id="search_name" class="input_text" placeholder="设备名称">
+    <input id="search_norm" class="input_text" placeholder="设备标准">
+    <input id="search_type" class="input_text" placeholder="设备类型">
+    <input id="search_manu" class="input_text" placeholder="设备制造商">
+    <button class="search_btn" id="search_btn" onclick="search()">搜索</button>
+    <button class="search_btn" id="clear_search_btn" onclick="clear_search()">清空条件</button>
+</div>
+<p> </p>
 <table border="1">
     <tr>
         <th>设备编号</th>
@@ -22,6 +72,9 @@
             {% if borrow %}
                 <button>
                     <a href="{{ url_for('borrow', ENo=e.ENo) }}">借出</a>
+                </button>
+                <button>
+                    <a href="{{ url_for('equipmentRemove', ENo=e.ENo) }}">报废</a>
                 </button>
             {% endif %}
             {% if back %}
