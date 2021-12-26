@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import form_field %}
+
+{% block content %}
+<h3>设备报废登记</h3>
+<table border="1">
+    <caption align="top">设备信息</caption>
+    <tr>
+        <td>设备编号: </td>
+        <td> {{ data["ENo"] }}</td>
+    </tr>
+    <tr>
+        <td>设备名称: </td>
+        <td> {{ data["EName"] }}</td>
+    </tr>
+    <tr>
+        <td>设备规格: </td>
+        <td> {{ data["Norm"] }}</td>
+    </tr>
+    <tr>
+        <td>设备类型: </td>
+        <td> {{ data["Type"] }}</td>
+    </tr>
+</table>
+<p>  </p>
+<form method="post">
+    {{ removeForm.csrf_token }}
+    {{ form_field(removeForm.ScrapDate) }}
+    <p> </p>
+    {{ form_field(removeForm.ScrapReason) }}
+    <p> </p>
+    {{ form_field(removeForm.SConfirm) }}
+    <p> </p>
+    {{ form_field(removeForm.OutMng) }}
+    <p> </p>
+    {{ form_field(removeForm.submit) }}
+    <p> </p>
+</form>
+{% endblock %}
