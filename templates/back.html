@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import form_field %}
+
+{% block content %}
+<h2>借出登记表</h2>
+<table border="1">
+    <caption align="top">设备信息</caption>
+    <tr>
+        <td>设备编号: </td>
+        <td> {{ data["ENo"] }}</td>
+    </tr>
+    <tr>
+        <td>设备名称: </td>
+        <td> {{ data["EName"] }}</td>
+    </tr>
+    <tr>
+        <td>设备规格: </td>
+        <td> {{ data["Norm"] }}</td>
+    </tr>
+    <tr>
+        <td>设备类型: </td>
+        <td> {{ data["Type"] }}</td>
+    </tr>
+</table>
+<p> </p>
+<table border="1">
+    <caption align="top">借出登记信息</caption>
+<!--    data["LdDate"] = record.LdDate-->
+<!--    data["ExpBkDate"] = record.ExpBkDate-->
+<!--    data["LdSNo"] = record.ExpBkDate-->
+<!--    data["LdName"] = p.Name-->
+    <tr>
+        <td>借用人工号 </td>
+        <td> {{ data["LdSNo"] }}</td>
+    </tr>
+    <tr>
+        <td>借用人姓名 </td>
+        <td> {{ data["LdName"] }}</td>
+    </tr>
+    <tr>
+        <td>借出日期 </td>
+        <td> {{ data["LdDate"] }}</td>
+    </tr>
+    <tr>
+        <td>计划归还日期 </td>
+        <td> {{ data["ExpBkDate"] }}</td>
+    </tr>
+</table>
+<p> </p>
+<form method="post">
+    {{ backForm.csrf_token }}
+    <p> </p>
+    {{ form_field(backForm.BkDate) }}
+    <p> </p>
+    {{ form_field(backForm.BkMng) }}
+    <p> </p>
+    {{ backForm.submit }}
+</form>
+{% endblock %}
